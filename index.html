@@ -5,20 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza Empire</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #fff3e6; text-align: center; }
-        h1 { color: #ff5733; }
-        #game { margin: 20px auto; width: 80%; max-width: 600px; padding: 10px; border: 2px solid #ff5733; border-radius: 5px; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background-color: #ffcc00;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .menu {
+            margin: 20px 0;
+        }
+        .menu-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            background-color: #fff;
+            transition: background-color 0.3s;
+        }
+        .menu-item:hover {
+            background-color: #f0f0f0;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #777;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to Pizza Empire!</h1>
-    <div id="game">
-        <p>Manage your own pizza store! Can you become the top pizza chef?</p>
+    <header>
+        <h1>Welcome to Pizza Empire!</h1>
+    </header>
+    <div class="menu">
+        <h2>Menu</h2>
+        <div class="menu-item">Pepperoni Pizza</div>
+        <div class="menu-item">Margherita Pizza</div>
+        <div class="menu-item">Vegetarian Pizza</div>
+        <div class="menu-item">BBQ Chicken Pizza</div>
     </div>
-
-    <script>
-        // Game logic will go here
-        alert('Welcome to Pizza Empire! Start your pizza adventure now!');
-    </script>
+    <footer>
+        <p>&copy; 2026 Pizza Empire. All rights reserved.</p>
+    </footer>
 </body>
 </html>
