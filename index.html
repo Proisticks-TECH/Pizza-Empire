@@ -4,53 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza Empire</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        header {
-            background-color: #ffcc00;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .menu {
-            margin: 20px 0;
-        }
-        .menu-item {
-            padding: 10px;
-            border: 1px solid #ddd;
-            margin-bottom: 10px;
-            background-color: #fff;
-            transition: background-color 0.3s;
-        }
-        .menu-item:hover {
-            background-color: #f0f0f0;
-        }
-        footer {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.8em;
-            color: #777;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Pizza Empire!</h1>
-    </header>
-    <div class="menu">
-        <h2>Menu</h2>
-        <div class="menu-item">Pepperoni Pizza</div>
-        <div class="menu-item">Margherita Pizza</div>
-        <div class="menu-item">Vegetarian Pizza</div>
-        <div class="menu-item">BBQ Chicken Pizza</div>
+    <div class="game-container">
+        <h1>Pizza Empire</h1>
+        <div class="info">
+            <p>Money: <span id="money">0</span> $</p>
+            <p>Clicks: <span id="clicks">0</span></p>
+            <p>CPS: <span id="cps">0</span></p>
+        </div>
+        <button id="click-button">Click for Pizza!</button>
+        <div class="upgrades">
+            <h2>Upgrades</h2>
+            <button id="upgrade1">Buy Upgrade 1 (10$)</button>
+            <button id="upgrade2">Buy Upgrade 2 (50$)</button>
+        </div>
     </div>
-    <footer>
-        <p>&copy; 2026 Pizza Empire. All rights reserved.</p>
-    </footer>
+    <script>
+        let money = 0;
+        let clicks = 0;
+        let cps = 0;
+        let upgrade1Cost = 10;
+        let upgrade2Cost = 50;
+
+        const moneyDisplay = document.getElementById('money');
+        const clicksDisplay = document.getElementById('clicks');
+        const cpsDisplay = document.getElementById('cps');
+        const clickButton = document.getElementById('click-button');
+        const upgrade1Button = document.getElementById('upgrade1');
+        const upgrade2Button = document.getElementById('upgrade2');
+
+        clickButton.addEventListener('click', () => {
+            money += 1;
+            clicks += 1;
+            updateDisplay();
+        });
+
+        upgrade1Button.addEventListener('click', () => {
+            if (money >= upgrade1Cost) {
+                money -= upgrade1Cost;
+                cps += 1;
+                upgrade1Cost *= 1.5;
+                upgrade1Button.textContent = `Buy Upgrade 1 (${Math.round(upgrade1Cost)}$)`;
+                updateDisplay();
+            }
+        });
+
+        upgrade2Button.addEventListener('click', () => {
+            if (money >= upgrade2Cost) {
+                money -= upgrade2Cost;
+                cps += 5;
+                upgrade2Cost *= 1.5;
+                upgrade2Button.textContent = `Buy Upgrade 2 (${Math.round(upgrade2Cost)}$)`;
+                updateDisplay();
+            }
+        });
+
+        function updateDisplay() {
+            moneyDisplay.textContent = money;
+            clicksDisplay.textContent = clicks;
+            cpsDisplay.textContent = cps;
+        }
+
+        setInterval(() => {
+            money += cps;
+            updateDisplay();
+        }, 1000);
+    </script>
 </body>
 </html>
