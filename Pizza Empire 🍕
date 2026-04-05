@@ -293,8 +293,12 @@ const ingredients = [
   {id: 'mushroom', name: '🍄 Mushrooms', cost: 300, value: 3, owned: false},
   {id: 'olive', name: '🫒 Olives', cost: 600, value: 5, owned: false},
   {id: 'bacon', name: '🥓 Bacon', cost: 1200, value: 8, owned: false},
-  {id: 'pineapple', name: '🍍 Pineapple', cost: 2500, value: 12, owned: false},
-  {id: 'truffle', name: '🍄‍🟫 Truffle', cost: 5000, value: 20, owned: false}
+  {id: 'jalapeno', name: '🌶️ Jalapeños', cost: 2000, value: 10, owned: false},
+  {id: 'garlic', name: '🧄 Garlic', cost: 3000, value: 12, owned: false},
+  {id: 'spinach', name: '🥬 Spinach', cost: 4500, value: 15, owned: false},
+  {id: 'tomato', name: '🍅 Sun-dried Tomatoes', cost: 6000, value: 18, owned: false},
+  {id: 'corn', name: '🌽 Corn', cost: 8000, value: 22, owned: false},
+  {id: 'truffle', name: '🍄‍🟫 Truffle', cost: 12000, value: 30, owned: false}
 ];
 
 // AUTOMATION
