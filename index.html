@@ -4,24 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza Empire</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <style>
+        /* UPGRADED CSS INJECTED */
+        body {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #2d3436;
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #dfe6e9;
+        }
+
+        .info p {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        #money { color: #27ae60; font-size: 28px; }
+        #cps { color: #e67e22; }
+
+        #click-button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.2s;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        #click-button:hover { transform: scale(1.05); }
+        #click-button:active { transform: scale(0.95); }
+
+        .upgrades {
+            border-top: 2px solid #eee;
+            padding-top: 15px;
+        }
+
+        .upgrades h2 { font-size: 22px; color: #2d3436; margin-bottom: 15px; }
+
+        button[id^="upgrade"] {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button[id^="upgrade"]:hover { background: #219150; }
+        button[id^="upgrade"]:disabled { background: #bdc3c7; cursor: not-allowed; }
+    </style>
 </head>
 <body>
     <div class="game-container">
-        <h1>Pizza Empire</h1>
+        <h1>🍕 Pizza Empire</h1>
         <div class="info">
-            <p>Money: <span id="money">0</span> $</p>
+            <p>Money: $<span id="money">0</span></p>
             <p>Clicks: <span id="clicks">0</span></p>
             <p>CPS: <span id="cps">0</span></p>
         </div>
-        <button id="click-button">Click for Pizza!</button>
+        
+        <button id="click-button">🍕</button>
+        
         <div class="upgrades">
             <h2>Upgrades</h2>
             <button id="upgrade1">Buy Upgrade 1 (10$)</button>
             <button id="upgrade2">Buy Upgrade 2 (50$)</button>
         </div>
     </div>
+
     <script>
         let money = 0;
         let clicks = 0;
@@ -63,9 +152,13 @@
         });
 
         function updateDisplay() {
-            moneyDisplay.textContent = money;
+            moneyDisplay.textContent = Math.floor(money);
             clicksDisplay.textContent = clicks;
             cpsDisplay.textContent = cps;
+            
+            // Added auto-disable for buttons based on cost
+            upgrade1Button.disabled = money < upgrade1Cost;
+            upgrade2Button.disabled = money < upgrade2Cost;
         }
 
         setInterval(() => {
